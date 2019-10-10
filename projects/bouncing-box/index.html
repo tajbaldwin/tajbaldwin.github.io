@@ -19,7 +19,7 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0;
+			left: 0px;
 		}
 	</style>
 
@@ -30,21 +30,19 @@
 
 	<!-- BEGIN JAVASCRIPT -->
 	<script>
-		/*globals position box points:true*/
-		/*eslint-disable no-unused-vars, no-undef*/
-		(function(){
-			'use strict';
-			/* global jQuery */
+	/*eslint-disable no-undef, no-unused-vars*/
+	(function(){
+	    'use strict'
 
 			
 			var box = jQuery('.box');
 			var boardWidth = jQuery('.board').width();
 	
 			// TODO 2 - Variable declarations
-			 var position = 0;
-			 var points = 0;
-			 var speed = 10;
-			 var direction = 1;
+			 var position;
+			 var points;
+			 var speed;
+			 var direction;
 			 
 			position = 0;
             points = 0;
@@ -53,36 +51,40 @@
 
 			box.css('left', position);      // moves the box to the x-coordinate of <position> 
             box.text(points);               // changes the text of the box to display the value of <points>
-			function update() {
-			   
+			
+	function update() {
+	    
+	  position += speed;    // increment position by speed on every update
+    console.log("new position: " + position);
+    
     if(position > boardWidth) {
         console.log("Right Wall Hit");
         direction = -1;
         console.log(direction);
     }
+if(position<0) {
+    console.log("Left Wall Hit");
+    direction = -1;
+    console.log(direction);
+}
 
     box.css('left', position);      
-}
+
 		// TODO 3 / 6 / 7 / 8
-				
-		box.css('left', position);      // moves the box to the x-coordinate of <position> 
-        box.text(points);               // changes the text of the box to display the value of <points>
-        
-}
+		
+		
+		
+
         
          
             
     
-
-    
-			
-
 function handleBoxClick() {
 				// TODO 4 / 5
-				 points += 1;           
- box.text(points);      
- position = 0;         
-  speed += 3;   
+				points += 1;           
+                box.text(points);      
+                position = 0;         
+                speed += 3;   
 				
 			}
 
@@ -91,7 +93,7 @@ function handleBoxClick() {
 			setInterval(update, 50);
 		
 			box.on('click', handleBoxClick);
-		})();
+		}]();
 	</script>
 </body>
 </html>
