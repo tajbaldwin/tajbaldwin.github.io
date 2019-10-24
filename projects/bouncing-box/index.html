@@ -35,65 +35,66 @@
 	    'use strict'
 
 			
-			var box = jQuery('.box');
-			var boardWidth = jQuery('.board').width();
-	
-			// TODO 2 - Variable declarations
-			 var position;
-			 var points;
-			 var speed;
-			 var direction;
-			 
-			position = 0;
-            points = 0;
-            speed = 10;
-            direction = 1;
+		var box = jQuery('.box');
+		var boardWidth = jQuery('.board').width();
 
-			box.css('left', position);      // moves the box to the x-coordinate of <position> 
-            box.text(points);               // changes the text of the box to display the value of <points>
-			
-	function update() {
-	    
-	  position += speed;    // increment position by speed on every update
-    console.log("new position: " + position);
-    
-    if(position > boardWidth) {
-        console.log("Right Wall Hit");
-        direction = -1;
-        console.log(direction);
-    }
-if(position<0) {
-    console.log("Left Wall Hit");
-    direction = -1;
-    console.log(direction);
-}
+		// TODO 2 - Variable declarations
+		 var position;
+		 var points;
+		 var speed;
+		 var direction;
+		 
+		position = 0;
+        points = 0;
+        speed = 10;
+        direction = 1;
 
-    box.css('left', position);      
-
-		// TODO 3 / 6 / 7 / 8
+		box.css('left', position);      // moves the box to the x-coordinate of <position> 
+        box.text(points);               // changes the text of the box to display the value of <points>
 		
-		
-		
-
-        
-         
+    	function update() {
+    	    
+        	position += speed * direction;;    // increment position by speed on every update
+            console.log("new position: " + position);
             
+            if(position > boardWidth) {
+                console.log("Right Wall Hit");
+                direction = -1;
+                console.log(direction);
+            }
+            if(position<0) {
+                console.log("Left Wall Hit");
+                direction = 1;
+                console.log(direction);
+            }
+        
+            box.css('left', position);      
+        }
+
+    		// TODO 3 / 6 / 7 / 8
+    		
+    		
+	
+
     
-function handleBoxClick() {
-				// TODO 4 / 5
-				points += 1;           
-                box.text(points);      
-                position = 0;         
-                speed += 3;   
-				
-			}
+     
+        
 
-
+        function handleBoxClick() {
+			// TODO 4 / 5
+			points += 1;           
+            box.text(points);      
+            position = 0;         
+            speed += 3;   
 			
-			setInterval(update, 50);
+		}
+
+
 		
-			box.on('click', handleBoxClick);
-		}]();
+		setInterval(update, 50);
+	
+		box.on('click', handleBoxClick);
+	})();
 	</script>
 </body>
 </html>
