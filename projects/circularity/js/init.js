@@ -34,12 +34,16 @@ var init = function (window) {
         
 
         // TODO 3 / 7 : Call the drawCircle function functionName(<arguments go here if the function has parameters>);
-        
+          drawCircle ();
+          drawCircle ();
+          drawCircle ();
+          drawCircle ();
+          drawCircle ();
         
 
 
     
-        view.addChild(fps);
+       view.addChild(fps);
         app.addUpdateable(fps);
     
         game.checkCirclePosition = function(circle) {
@@ -50,16 +54,19 @@ var init = function (window) {
                 circle.x = 0;
             } 
             // TODO 5a) if the circle has gone past of the LEFT side of the screen then place it on the RIGHT
-            else if ( / * Fill me in! * / ) {
+            else if ( circle.x < 0 ) {
+                circle.x = canvas.width;
                 
             } 
 
             // TODO 5b) if the circle has gone past of the TOP side of the screen then place it on the BOTTOM
-            if ( / * Fill me in! * / ) {
+            if ( circle.y < 0) {
+                circle.y = canvas.height;
                 
             }
             // TODO 5c) if the circle has gone past of the BOTTOM side of the screen then place it OFF-SCREEN TOP
-            else if ( / * Fill me in! * / ) {
+            else if (circle.y > canvas.height) {
+                circle.y = 0;
             
             }
             // YOUR TODO 5 CODE ENDS HERE //////////////////////////
@@ -67,6 +74,10 @@ var init = function (window) {
     
         function update() {
             // TODO 4 : Update the circle's position //
+            for (var i = 0; i < circles.length; i++) {
+                var eachCircle = circles [i];
+                physikz.updateposition(eachCircle);
+                game.checkCircleposition(eachCircle);
 
             
             // TODO 5 : Call game.checkCirclePosition on your circles.
